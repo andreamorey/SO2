@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "ficheros_basicos.h": "c",
+        "errno.h": "c"
+    }
+}
