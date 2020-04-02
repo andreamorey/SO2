@@ -14,8 +14,8 @@ echo "#consultamos sintaxis comando"
 ./escribir
 echo "################################################################################"
 echo "$ ./escribir disco "123456789" 0"
-echo "#escribimos el texto “123456789” en los offsets  9000, 209000, 30725000, y "
-echo "#409605000 de un mismo inodo"
+echo "#escribimos el texto “123456789” en los offsets  9000, 209000, 30725000, "
+echo "#409605000 y 480000000 de un mismo inodo"
 ./escribir disco "123456789" 0
 echo "################################################################################"
 echo "$ ./leer disco 1 > ext1.txt"
@@ -28,8 +28,8 @@ echo "#(ha de coincidir con el tamaño en bytes lógico del inodo y con los byte
 ls -l ext1.txt
 echo "################################################################################"
 echo "$ ./escribir disco "123456789" 1"
-echo "#escribimos el texto “123456789” en los offsets 9000, 209000, 30725000, y "
-echo "#71680000, de inodos diferentes"
+echo "#escribimos el texto “123456789” en los offsets 9000, 209000, 30725000, "
+echo "#409605000 y 480000000, de inodos diferentes"
 ./escribir disco "123456789" 1
 echo "################################################################################"
 echo "$ ./leer disco 2 > ext2.txt"  

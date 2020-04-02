@@ -1,0 +1,7 @@
+rm disco
+make clean
+make
+./mi_mkfs disco 100000
+./escribir disco "123456789" 0
+
+./truncar disco 1 0

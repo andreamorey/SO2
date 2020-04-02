@@ -5,8 +5,8 @@ echo "$ ./mi_mkfs disco 100000"
 ./mi_mkfs disco 100000
 echo "################################################################################"
 echo "$ ./escribir disco "$(cat texto2.txt)" 1"
-echo "#escribimos el texto contenido en text2.txt en los offsets  9000, 209000, "
-echo "#30725000 y 409605000, de inodos diferentes"
+echo "#escribimos el texto contenido en text2.txt en los offsets  9000, 209000, 30725000, "
+echo "#409605000 y 480000000 de inodos diferentes"
 ./escribir disco "$(cat texto2.txt)" 1
 echo "################################################################################"
 echo "$ ./leer disco 2 > ext4.txt"
