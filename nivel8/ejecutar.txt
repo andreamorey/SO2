@@ -1,0 +1,61 @@
+rm disco
+make clean
+make 
+./mi_mkfs disco 100000
+
+printf "\n$./mi_mkdir disco 6 /dir1/\n\n"
+./mi_mkdir disco 6 /dir1/
+
+printf "\n$./mi_mkdir disco 6 /dir1/dir2/\n\n"
+./mi_mkdir disco 6 /dir1/dir2/
+
+printf "\n$./mi_chmod disco 1 /dir1/dir2/\n\n"
+./mi_chmod disco 1 /dir1/dir2/
+
+printf "\n$./mi_touch disco 6 /dir1/dir2/fic1\n\n"
+./mi_touch disco 6 /dir1/dir2/fic1
+
+printf "\n$./mi_chmod disco 2 /dir1/dir2/\n\n"
+./mi_chmod disco 2 /dir1/dir2/
+
+printf "\n$./mi_touch disco 6 /dir1/dir2/fic1\n\n"
+./mi_touch disco 6 /dir1/dir2/fic1
+
+printf "\n$./mi_chmod disco 6 /dir1/dir2/\n\n"
+./mi_chmod disco 6 /dir1/dir2/
+
+printf "\n$./mi_touch disco 6 /dir1/dir2/fic2\n\n"
+./mi_touch disco 6 /dir1/dir2/fic2
+
+printf "\n$./mi_touch disco 6 /dir1/dir2/fic1\n\n"
+./mi_touch disco 6 /dir1/dir2/fic1
+
+printf "\n$./mi_ls disco /\n\n"
+./mi_ls disco /
+
+printf "\n$./mi_stat disco /dir1/\n\n"
+./mi_stat disco /dir1/
+
+printf "\n$./mi_ls disco /dir1/\n\n"
+./mi_ls disco /dir1/ 
+
+printf "\n$./mi_stat disco /dir1/dir2/\n\n"
+./mi_stat disco /dir1/dir2/
+
+printf "\n$./mi_ls disco /dir1/dir2/\n\n"
+./mi_ls disco /dir1/dir2/
+
+printf "\n$./mi_ls disco /dir1/dir3/\n\n"
+./mi_ls disco /dir1/dir3/
+
+printf "\n$./mi_touch disco 6 /dir1/dir2/fic1\n\n"
+./mi_touch disco 6 /dir1/dir2/fic1
+
+printf "\n$./mi_mkdir disco 6 /dir1/dir2/fic1/dir3/\n\n"
+./mi_mkdir disco 6 /dir1/dir2/fic1/dir3/
+
+printf "\n$ ./mi_touch disco 6 /dir1/dir2/dir3/fic1\n\n"
+ ./mi_touch disco 6 /dir1/dir2/dir3/fic1
+
+printf "\n$./mi_mkdir disco 9 /dir5/\n\n"
+./mi_mkdir disco 9 /dir5/

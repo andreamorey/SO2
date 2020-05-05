@@ -1,0 +1,26 @@
+rm disco
+make clean
+make 
+./mi_mkfs disco 100000
+
+printf "\n$./mi_touch disco 6 /fichero\n\n"
+./mi_touch disco 6 /fichero
+
+printf "\n$./mi_ls disco /\n\n"
+./mi_ls disco /
+
+printf "\n$./mi_escribir  disco /fichero “hola que tal” 5120\n\n"
+./mi_escribir disco /fichero “hola que tal” 5120
+
+printf "\n$ ./mi_ls disco /\n\n"
+./mi_ls disco /
+
+printf "\n$ ./mi_chmod disco 4 /fichero\n\n"
+./mi_chmod disco 4 /fichero
+
+printf "\n$./mi_escribir  disco /fichero “estoy estupendamente” 256000\n\n"
+./mi_escribir  disco /fichero “estoy estupendamente” 256000
+
+printf "\n$./mi_ls disco /fichero\n\n"
+./mi_ls disco /fichero
+

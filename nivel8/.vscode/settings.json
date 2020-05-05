@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "directorios.h": "c",
+        "ficheros.h": "c",
+        "ficheros_basico.h": "c"
+    }
+}
