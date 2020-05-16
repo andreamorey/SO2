@@ -1,3 +1,4 @@
+//Aisha Gandarova, Andrea Morey Sanchez y Maria Orell Monserrat
 #include "directorios.h"
 
 int main(int argc, char **argv){
@@ -8,10 +9,6 @@ int main(int argc, char **argv){
 
     if (bmount(argv[1]) ==-1){ // si se ha abierto bien el fichero
         //error
-        return -1;
-    }
-    if(strcmp(argv[2], "/") == 0){
-        fprintf(stderr, RED"No se puede borrar el directorio raiz\n"RESET);
         return -1;
     }
 

@@ -1,3 +1,4 @@
+//Aisha Gandarova, Andrea Morey Sanchez y Maria Orell Monserrat
 #include "bloques.h"
 
 static int descriptor = 0;

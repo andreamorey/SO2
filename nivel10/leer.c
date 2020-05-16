@@ -1,3 +1,4 @@
+//Aisha Gandarova, Andrea Morey Sanchez y Maria Orell Monserrat
 #define TAMBUFFER 1500
 #include "ficheros.h"
 

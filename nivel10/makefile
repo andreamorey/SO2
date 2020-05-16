@@ -13,15 +13,9 @@ all: $(OBJS) $(PROGRAMS)
 $(PROGRAMS): $(LIBRARIES) $(INCLUDES)
 	$(CC) $(LDFLAGS) $(LIBRARIES) $@.o -o $@
 
-#mi_mkfs: mi_mkfs.o $(LIBRARIES) $(INCLUDES)
-#	$(CC) $(LDFLAGS) $(LIBRARIES) $< -o $@
-#leer_sf: leer_sf.o $(LIBRARIES) $(INCLUDES)
-#	$(CC) $(LDFLAGS) $(LIBRARIES) $< -o $@
-
-
 %.o: %.c $(INCLUDES)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 .PHONY: clean
 clean:
-	rm -rf *.o *~ $(PROGRAMS)
+	rm -rf *.o *~ $(PROGRAMS) disco* ext*

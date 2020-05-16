@@ -1,3 +1,4 @@
+//Aisha Gandarova, Andrea Morey Sanchez y Maria Orell Monserrat
 #include "directorios.h"
 
 int main(int argc, char **argv) {

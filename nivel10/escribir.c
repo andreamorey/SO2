@@ -1,3 +1,4 @@
+//Aisha Gandarova, Andrea Morey Sanchez y Maria Orell Monserrat
 #define NUMOFFSETS 5
 #include "ficheros.h"
 

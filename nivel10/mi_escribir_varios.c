@@ -1,3 +1,4 @@
+//Aisha Gandarova, Andrea Morey Sanchez y Maria Orell Monserrat
 // mi_escribir_varios.c para probar la caché L/E
 #include "directorios.h"
 

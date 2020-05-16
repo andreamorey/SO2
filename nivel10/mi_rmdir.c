@@ -1,3 +1,4 @@
+//Aisha Gandarova, Andrea Morey Sanchez y Maria Orell Monserrat
 #include "directorios.h"
 
 int main(int argc, char **argv){
@@ -11,13 +12,16 @@ int main(int argc, char **argv){
         return -1;
     }
 
-
-
     if(argv[2][strlen(argv[2])-1] != '/'){
         fprintf(stderr, RED"La ruta original no es un directorio\n"RESET);
         return -1;
     }
     
+    if(strcmp(argv[2], "/") == 0){
+        fprintf(stderr, RED"No se puede borrar el directorio raiz\n"RESET);
+        return -1;
+    }
+
     mi_unlink(argv[2]);
 
     if (bumount() == -1){

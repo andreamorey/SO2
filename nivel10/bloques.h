@@ -1,3 +1,4 @@
+//Aisha Gandarova, Andrea Morey Sanchez y Maria Orell Monserrat
 #define BLOCKSIZE 1024 // bytes
 #include <stdio.h>  //printf(), fprintf(), stderr, stdout, stdin
 #include <fcntl.h> //O_WRONLY, O_CREAT, O_TRUNC

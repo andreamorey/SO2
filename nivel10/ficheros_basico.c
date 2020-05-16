@@ -1,3 +1,4 @@
+//Aisha Gandarova, Andrea Morey Sanchez y Maria Orell Monserrat
 #include "ficheros_basico.h"
 
 // Devuelve el tamaño en bloques que ocupa el mapa de bits

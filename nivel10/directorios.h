@@ -1,3 +1,4 @@
+//Aisha Gandarova, Andrea Morey Sanchez y Maria Orell Monserrat
 #define ERROR_CAMINO_INCORRECTO -1
 #define ERROR_PERMISO_LECTURA -2
 #define ERROR_NO_EXISTE_ENTRADA_CONSULTA -3

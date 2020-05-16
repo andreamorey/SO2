@@ -1,3 +1,4 @@
+//Aisha Gandarova, Andrea Morey Sanchez y Maria Orell Monserrat
 #define INODOSIZE 128
 #define POSSB 0
 #define NPUNTEROS (BLOCKSIZE/sizeof(unsigned int)) //256

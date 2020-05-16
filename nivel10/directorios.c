@@ -1,3 +1,4 @@
+//Aisha Gandarova, Andrea Morey Sanchez y Maria Orell Monserrat
 #include "directorios.h"
 
 int extraer_camino(const char *camino, char *inicial,
@@ -27,21 +28,6 @@ int extraer_camino(const char *camino, char *inicial,
         *tipo = 'd';
     }
     return 0;
-
-    /*
-    // a lo mejor hay que tratar el error de /
-    strncpy(inicial, *(camino+1), strlen(camino)-1);  // inicial = fichero.txt
-    final = strchr(inicial, '/');
-    if (final == NULL){
-        tipo = 'f';
-    }else{
-        int numCar = strlen(inicial);
-        numCar -= strlen(final);
-        strncpy(inicial, inicial, numCar);
-        tipo = 'd';
-    }
-    return tipo;
-    */
 }
 
 int buscar_entrada(const char *camino_parcial,
@@ -346,12 +332,12 @@ int mi_chmod(const char *camino, unsigned char permisos)
 {
     unsigned int p_inodo_dir = 0, p_inodo, p_entrada;
     int error = buscar_entrada(camino, &p_inodo_dir, &p_inodo, &p_entrada, 0, permisos);
-    if (error != ERROR_NO_EXISTE_ENTRADA_CONSULTA)
+    if (error == ERROR_NO_EXISTE_ENTRADA_CONSULTA)
     {
-        mi_chmod_f(p_inodo, permisos);
+        mostrar_error_buscar_entrada(error);
         return 0;
     }
-    mostrar_error_buscar_entrada(error);
+    mi_chmod_f(p_inodo, permisos);
     return 0;
 }
 
@@ -378,19 +364,19 @@ int mi_write(const char *camino, const void *buf, unsigned int offset, unsigned 
         int error = buscar_entrada(camino, &p_inodo_dir, &p_inodo, &p_entrada, 0, 6);
 
         memcpy(ultimaEntradaEscritura.camino, camino, strlen(camino));
-        fprintf(stderr, "[mi_write() -> actualizamos la caché de escritura]\n");
+       // fprintf(stderr, "[mi_write() -> actualizamos la caché de escritura]\n");
         ultimaEntradaEscritura.p_inodo = p_inodo;
         if (error == ERROR_NO_EXISTE_ENTRADA_CONSULTA)
         {
             mostrar_error_buscar_entrada(error);
-            return -1;
+            return 0;
         }
     }
     else
     {
         p_inodo = ultimaEntradaEscritura.p_inodo;
-        fprintf(stderr, "[mi_write() -> Utilizamos la caché de escritura en vez de "
-                        "llamar a buscar_entrada]\n");
+        //fprintf(stderr, "[mi_write() -> Utilizamos la caché de escritura en vez de "
+                        //"llamar a buscar_entrada]\n");
     }
 
     // la entrada existe, escribimos en el inodo;
@@ -407,19 +393,19 @@ int mi_read(const char *camino, void *buf, unsigned int offset, unsigned int nby
     {
         int error = buscar_entrada(camino, &p_inodo_dir, &p_inodo, &p_entrada, 0, 0);
         memcpy(ultimaEntradaLectura.camino, camino, strlen(camino));
-        fprintf(stderr, "[mi_read() -> actualizamos la caché de lectura]\n");
+        //fprintf(stderr, "[mi_read() -> actualizamos la caché de lectura]\n");
         ultimaEntradaLectura.p_inodo = p_inodo;
         if (error == ERROR_NO_EXISTE_ENTRADA_CONSULTA)
         {
             mostrar_error_buscar_entrada(error);
-            return -1;
+            return 0;
         }
     }
     else
     {
         p_inodo = ultimaEntradaLectura.p_inodo;
-        fprintf(stderr, "\n[mi_read() -> Utilizamos la caché de lectura en vez de "
-                        "llamar a buscar_entrada]\n");
+       // fprintf(stderr, "\n[mi_read() -> Utilizamos la caché de lectura en vez de "
+                       // "llamar a buscar_entrada]\n");
     }
 
     int leidos;

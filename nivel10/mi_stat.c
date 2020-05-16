@@ -1,3 +1,4 @@
+//Aisha Gandarova, Andrea Morey Sanchez y Maria Orell Monserrat
 #include "directorios.h"
 
 int main(int argc, char **argv){
@@ -25,7 +26,7 @@ int main(int argc, char **argv){
     ts = localtime(&p_stat.mtime);
     strftime(mtime, sizeof(mtime), "%a %Y-%m-%d %H:%M:%S", ts);
     
-    fprintf(stderr,"atime: %s \nmtime: %s \nctime: %s\n",atime,mtime,ctime);
+    fprintf(stderr,"atime: %s \nctime: %s \nmtime: %s\n",atime,ctime,mtime);
     fprintf(stderr,"nlinks: %i\n", p_stat.nlinks);
     fprintf(stderr,"tamEnBytesLog: %i\n", p_stat.tamEnBytesLog);
     fprintf(stderr,"numBloquesOcupados: %i\n", p_stat.numBloquesOcupados);  

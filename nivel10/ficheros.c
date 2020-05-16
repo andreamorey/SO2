@@ -1,3 +1,4 @@
+//Aisha Gandarova, Andrea Morey Sanchez y Maria Orell Monserrat
 #include "ficheros.h"
 
 // Función que escribe el contenido de un buffer de memoria en un fichero o directorio
@@ -5,32 +6,32 @@ int mi_write_f(unsigned int ninodo, const void *buf_original,
 unsigned int offset, unsigned int nbytes){
     struct inodo inodo;
     leer_inodo(ninodo,&inodo);
+    int escritos = 0;
     // comprobamos los permisos del inodo
 
     if ((inodo.permisos & 2) != 2) {
         fprintf(stderr, "Error: no hay permiso de "
         "escritura\n"); 
-        return -1;
+        return escritos;
     }
     int primerBLogico = offset/BLOCKSIZE;
     int ultimoBLogico = (nbytes + offset - 1)/BLOCKSIZE; 
     char buf_bloque[BLOCKSIZE];
     int desp1 = offset%BLOCKSIZE;  //desplazamiento en el bloque para el offset
-    int desp2 = (nbytes + offset - 1)%BLOCKSIZE; //miramos en el bloque donde llegan los nbytes escritos a partir del offset
-    int escritos = 0;
+    int desp2 = (nbytes + offset - 1)%BLOCKSIZE; //miramos en el bloque donde llegan los nbytes escritos a partir del offse
     // si el primer y último bloque coinciden
     if (primerBLogico == ultimoBLogico){  
         int primerBFisico = traducir_bloque_inodo(ninodo,primerBLogico,1);
         if(bread(primerBFisico,buf_bloque) == -1){
             fprintf(stderr,"[mi_write_f-> no se ha podido leer el bloque]\n");
-            return -1;
+            return escritos;
         }
         // escribimos los nuevos datos preservando los que ya tenía
         memcpy(buf_bloque+desp1,buf_original,desp2+1-desp1); 
         if(bwrite(primerBFisico,buf_bloque) == -1){
             fprintf(stderr,"[mi_write_f-> no se han podido guardar el "
             "buffer en el bloque físico]\n");
-            return -1;
+            return escritos;
         }
         escritos = desp2+1-desp1;
         
@@ -75,15 +76,15 @@ int mi_read_f(unsigned int ninodo, void *buf_original,
   unsigned int offset, unsigned int nbytes){
     struct inodo inodo;
     leer_inodo(ninodo,&inodo);
+    int leidos = 0;
     // comprobamos los permisos del inodo
     if ((inodo.permisos & 4) != 4) {
         fprintf(stderr, "No hay permisos de lectura\n"); 
-        return -1;
+        return leidos;
     }
-    int leidos = 0;
+    
      //No podemos leer más allá del tamaño en bytes lógicos del inodo
     if(offset >= inodo.tamEnBytesLog){
-        leidos=0;   // no podemos leer nada
         return leidos;
     }
     //En este caso leemos solo los bytes desde el offset hasta EOF
@@ -112,7 +113,7 @@ int mi_read_f(unsigned int ninodo, void *buf_original,
         bfisico = traducir_bloque_inodo(ninodo,primerBLogico,0);
         if (bfisico != -1){ // si el bloque físico existe
             if(bread(bfisico, buf_bloque) == -1){
-                return -1;
+                return leidos;
             }
             memcpy(buf_original,buf_bloque+desp1,BLOCKSIZE-desp1);
         }
@@ -122,7 +123,7 @@ int mi_read_f(unsigned int ninodo, void *buf_original,
             bfisico = traducir_bloque_inodo(ninodo,i,0);
             if (bfisico != -1){ // si el bloque físico existe
                 if(bread(bfisico,buf_bloque) < 0){
-                    return -1;
+                    return leidos;
                 }
         memcpy(buf_original+(BLOCKSIZE-desp1)+(i-primerBLogico-1)*BLOCKSIZE,buf_bloque,BLOCKSIZE);
     
@@ -133,7 +134,7 @@ int mi_read_f(unsigned int ninodo, void *buf_original,
         bfisico = traducir_bloque_inodo(ninodo, ultimoBLogico,0);
         if (bfisico != -1){ // si el bloque físico existe
             if(bread(bfisico,buf_bloque) == -1){
-                return -1;
+                return leidos;
             }
             memcpy(buf_original +(nbytes-desp2-1),buf_bloque,desp2 + 1);
         }
